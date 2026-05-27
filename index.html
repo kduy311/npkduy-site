@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Khanh-Duy Nguyen Phan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #f7f5f0;
+      --text:    #1a1a18;
+      --muted:   #6b6860;
+      --accent:  #8b1a00;
+      --border:  #dedad3;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "DM Sans", -apple-system, sans-serif;
+      font-size: 16px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Header ── */
+    #site-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 48px;
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      z-index: 100;
+      border-bottom: 1px solid var(--border);
+    }
+
+    #site-name {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      cursor: pointer;
+      color: var(--text);
+    }
+
+    #site-nav {
+      display: flex;
+      gap: 36px;
+    }
+
+    #site-nav a {
+      font-family: "DM Sans", sans-serif;
+      font-size: 11.5px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      color: var(--muted);
+      padding-bottom: 3px;
+      border-bottom: 1px solid transparent;
+      cursor: pointer;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    #site-nav a:hover  { color: var(--text); }
+    #site-nav a.active { color: var(--text); border-bottom-color: var(--text); }
+
+    /* ── Pages ── */
+    .page { display: none; }
+    .page.active { display: block; }
+
+    .content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 64px 48px 120px;
+    }
+
+    /* ════ BIO ════ */
+    .bio-photo-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+    .photo {
+      width: 210px;
+      height: 210px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: var(--border);
+    }
+    .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .photo svg { width: 100%; height: 100%; }
+
+    .bio-text {
+      text-align: center;
+      max-width: 660px;
+      margin: 0 auto;
+    }
+
+    .bio-name {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 52px;
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .bio-role {
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+
+    .bio-text p {
+      font-size: 16px;
+      margin-bottom: 16px;
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    .bio-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 6px 20px;
+      margin-top: 32px;
+    }
+    .bio-links a {
+      font-size: 11.5px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid var(--text);
+      padding-bottom: 1px;
+      transition: opacity 0.15s;
+    }
+    .bio-links a:hover { opacity: 0.5; }
+
+    /* ════ RESEARCH ════ */
+    .section-heading {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 42px;
+      font-weight: 400;
+      margin-bottom: 48px;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+
+    .research-group { margin-bottom: 72px; }
+
+    .research-group-label {
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 32px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .paper { margin-bottom: 56px; }
+
+    .paper-title {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 1.35;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+    .paper-title a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .paper-title a:hover { opacity: 0.7; }
+
+    .paper-coauthors {
+      font-size: 14px;
+      text-align: center;
+      font-style: italic;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .paper-coauthors a { color: var(--accent); text-decoration: underline; }
+
+    .paper-journal {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      text-align: center;
+      font-style: italic;
+      font-size: 17px;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .blog-callout {
+      text-align: center;
+      font-size: 14px;
+      font-style: italic;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+    .blog-callout a { color: var(--accent); text-decoration: underline; }
+
+    .paper-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+    .paper-body.no-figure .paper-abstract { grid-column: 1 / -1; }
+    .paper-figure img { width: 100%; height: auto; display: block; }
+
+    .paper-abstract {
+      font-size: 15px;
+      line-height: 1.8;
+      color: #333;
+    }
+
+    .paper-presentations {
+      font-size: 13px;
+      margin-top: 14px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+    .paper-presentations strong { color: var(--text); }
+
+    /* ════ TEACHING ════ */
+    .teaching-entry {
+      margin-bottom: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+    }
+    .teaching-entry:last-child { border-bottom: none; }
+
+    .teaching-course {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 22px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    .teaching-role {
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    .teaching-desc { font-size: 15px; line-height: 1.75; color: #333; }
+
+    /* ════ CV ════ */
+    .cv-block { margin-bottom: 44px; }
+
+    .cv-heading {
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+      margin-bottom: 20px;
+    }
+
+    .cv-row {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 8px;
+      font-size: 15px;
+      margin-bottom: 16px;
+    }
+    .cv-year { color: var(--muted); font-size: 13px; padding-top: 2px; }
+    .cv-title {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 1.35;
+    }
+    .cv-sub { font-size: 13px; color: var(--muted); margin-top: 3px; }
+    .cv-desc { font-size: 13.5px; color: #444; margin-top: 6px; line-height: 1.65; }
+
+    .cv-dl {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid var(--text);
+      padding-bottom: 2px;
+      margin-top: 8px;
+      transition: opacity 0.15s;
+    }
+    .cv-dl:hover { opacity: 0.5; }
+
+    .ref-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+    .ref-name {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 18px;
+      font-weight: 600;
+    }
+    .ref-sub { color: var(--muted); font-size: 13px; }
+    .ref-email a { color: var(--accent); text-decoration: underline; font-size: 13px; }
+
+    @media (max-width: 640px) {
+      #site-header { padding: 18px 20px; flex-wrap: wrap; gap: 14px; }
+      #site-nav { gap: 18px; }
+      .content { padding: 40px 20px 80px; }
+      .paper-body { grid-template-columns: 1fr; }
+      .cv-row { grid-template-columns: 72px 1fr; }
+      .ref-grid { grid-template-columns: 1fr; }
+      .bio-name { font-size: 38px; }
+    }
+  </style>
+</head>
+<body>
+
+<header id="site-header">
+  <div id="site-name" data-page="bio">Khanh-Duy Nguyen Phan</div>
+  <nav id="site-nav">
+    <a id="nav-bio"      data-page="bio">Bio</a>
+    <a id="nav-research" data-page="research">Research</a>
+    <a id="nav-teaching" data-page="teaching">Teaching</a>
+    <a id="nav-cv"       data-page="cv">CV</a>
+  </nav>
+</header>
+
+<!-- ════ BIO ════ -->
+<div class="page active" id="page-bio">
+  <div class="content">
+
+    <div class="bio-photo-wrap">
+      <div class="photo">
+        <!-- Replace with: <img src="photo.jpg" alt="Khanh-Duy Nguyen Phan"> -->
+        <svg viewBox="0 0 210 210" xmlns="http://www.w3.org/2000/svg">
+          <rect width="210" height="210" fill="#dedad3"/>
+          <circle cx="105" cy="84" r="42" fill="#c4bfb6"/>
+          <ellipse cx="105" cy="192" rx="66" ry="42" fill="#c4bfb6"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="bio-text">
+      <div class="bio-name">Khanh-Duy Nguyen Phan</div>
+      <div class="bio-role">Master's Student · University of Padova &nbsp;·&nbsp; Research Assistant · James Madison University</div>
+
+      <p>
+        I am a Master's student in Applied Economics (Digital Economics track) at the
+        <strong>University of Padova</strong>, Italy, and a Research Assistant at
+        <strong>James Madison University</strong> under Assist. Prof. Huiyi Chen.
+      </p>
+      <p>
+        My fields of interest include <strong>Digital Economics</strong>,
+        <strong>Environmental Economics</strong>, and <strong>Political Economy</strong>.
+      </p>
+      <p>
+        My research explores the intersection of labour markets, technology, and political economy
+        in emerging economies. I am particularly interested in how social media, digital platforms,
+        and institutional environments shape collective action and economic outcomes.
+      </p>
+      <p>
+        I hold a Bachelor's degree in International Business
+        (<em>Honours, Summa Cum Laude</em>) from Can Tho University, Vietnam.
+      </p>
+
+      <div class="bio-links">
+        <a href="mailto:phankhanhduy.nguyen@studenti.unipd.it">Email</a>
+        <a href="#">CV</a>
+        <a href="#">Google Scholar</a>
+        <a href="https://www.linkedin.com/in/npkduy311" target="_blank">LinkedIn</a>
+        <a href="#">GitHub</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════ RESEARCH ════ -->
+<div class="page" id="page-research">
+  <div class="content">
+
+    <div class="section-heading">Research</div>
+
+    <div class="research-group">
+      <div class="research-group-label">Working Papers</div>
+
+      <div class="paper">
+        <div class="paper-title">
+          <a href="#">Social Networks and the Spread of Labour Strikes</a>
+        </div>
+        <div class="paper-coauthors">
+          (with <a href="https://www.hui-yi-chen.com/" target="_blank">Assist. Prof. Huiyi Chen</a>)
+        </div>
+        <div class="paper-journal">Work in Progress</div>
+        <div class="paper-body no-figure">
+          <div class="paper-abstract">
+            This paper examines the role of social media and online networks in the diffusion
+            of labour strikes in the United States. Using the Cornell ILR School's Labor Action
+            Tracker enriched with social media engagement variables — Facebook likes, followers,
+            and group members — collected via custom Python web-scraping scripts, we study how
+            online visibility and network exposure shape the timing, spread, and intensity of
+            strike activity. The analysis leverages a panel of over 20 million observations and
+            exploits variation in social media engagement across labour union strikes.
+            <div class="paper-presentations">
+              <strong>Data collection:</strong> Facebook engagement indicators for each strike
+              event in the Cornell ILR Labor Action Tracker, 2021–present.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="paper">
+        <div class="paper-title">
+          <a href="#">Impact of Sustainable Mangrove–Shrimp Farming Innovations on Fish Farmer Welfare</a>
+        </div>
+        <div class="paper-coauthors">Research conducted at <a href="#">GIZ Vietnam</a></div>
+        <div class="paper-journal">Work in Progress</div>
+        <div class="paper-body no-figure">
+          <div class="paper-abstract">
+            This paper estimates the causal impact of sustainable mangrove–shrimp farming
+            innovations on the welfare of fish farmers in the Mekong Delta, Vietnam. Using a
+            Difference-in-Differences design applied to a panel database of 300+ fish farmers,
+            the study evaluates outcomes aligned with SDG 2 (Zero Hunger). Conducted in
+            collaboration with the Deutsche Gesellschaft für Internationale Zusammenarbeit (GIZ).
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ════ TEACHING ════ -->
+<div class="page" id="page-teaching">
+  <div class="content">
+
+    <div class="section-heading">Teaching</div>
+
+    <div class="teaching-entry">
+      <div class="teaching-course">KT113H Econometrics</div>
+      <div class="teaching-role">Teaching Assistant · Can Tho University · Fall 2024, Fall 2025</div>
+      <div class="teaching-desc">
+        Undergraduate econometrics course covering OLS estimation, hypothesis testing,
+        panel data methods, and instrumental variables. Conducted weekly tutorials and
+        held office hours for students.
+      </div>
+    </div>
+
+    <div class="teaching-entry">
+      <div class="teaching-course">KT111H International Economics</div>
+      <div class="teaching-role">Teaching Assistant · Can Tho University · Spring 2024</div>
+      <div class="teaching-desc">
+        Undergraduate course covering trade theory, international factor movements,
+        exchange rate determination, and trade policy. Assisted with grading and
+        led weekly discussion sections.
+      </div>
+    </div>
+
+    <div class="teaching-entry">
+      <div class="teaching-course">KT110H Statistics for Business</div>
+      <div class="teaching-role">Teaching Assistant · Can Tho University · Spring 2025</div>
+      <div class="teaching-desc">
+        Undergraduate statistics course covering probability theory, descriptive statistics,
+        sampling distributions, and hypothesis testing. Supported students through
+        weekly tutorials and graded problem sets.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════ CV ════ -->
+<div class="page" id="page-cv">
+  <div class="content">
+
+    <div class="section-heading">Curriculum Vitae</div>
+
+    <div class="cv-block">
+      <div class="cv-heading">Education</div>
+      <div class="cv-row">
+        <div class="cv-year">2025–present</div>
+        <div>
+          <div class="cv-title">Master's in Applied Economics (Digital Economics track)</div>
+          <div class="cv-sub">University of Padova, Italy &nbsp;·&nbsp; GPA: 30/30</div>
+        </div>
+      </div>
+      <div class="cv-row">
+        <div class="cv-year">2020–2025</div>
+        <div>
+          <div class="cv-title">Bachelor's in International Business (Honours), <em>Summa Cum Laude</em></div>
+          <div class="cv-sub">Can Tho University, Vietnam &nbsp;·&nbsp; GPA: 3.94/4.0</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cv-block">
+      <div class="cv-heading">Research &amp; Professional Experience</div>
+      <div class="cv-row">
+        <div class="cv-year">Apr 2025–present</div>
+        <div>
+          <div class="cv-title">Research Assistant — James Madison University</div>
+          <div class="cv-sub">Supervisor: Assist. Prof. Huiyi Chen</div>
+          <div class="cv-desc">Built Python scripts to crawl social media engagement indicators for labour union strikes, enriching the Cornell ILR Labor Action Tracker. Processed and analysed a panel of 20M+ observations in STATA.</div>
+        </div>
+      </div>
+      <div class="cv-row">
+        <div class="cv-year">Jul 2024–Jan 2025</div>
+        <div>
+          <div class="cv-title">Research Intern — GIZ</div>
+          <div class="cv-sub">Deutsche Gesellschaft für Internationale Zusammenarbeit</div>
+          <div class="cv-desc">Applied a Difference-in-Differences design on a panel of 300+ fish farmers to estimate the impact of sustainable mangrove–shrimp farming innovations (SDG 2). Prepared policy briefs, translation, budgeting, and event planning.</div>
+        </div>
+      </div>
+      <div class="cv-row">
+        <div class="cv-year">Oct 2022–Jul 2024</div>
+        <div>
+          <div class="cv-title">Research Assistant — Can Tho University</div>
+          <div class="cv-sub">Supervisors: Assoc. Prof. Pham Le Thong, Assoc. Prof. Phan Anh Tu</div>
+          <div class="cv-desc">Worked on 5 research projects funded by USAID and the Vietnamese Ministry of Education. Designed surveys, cleaned and analysed datasets, created visualisations, and prepared journal submissions.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cv-block">
+      <div class="cv-heading">Teaching Experience</div>
+      <div class="cv-row">
+        <div class="cv-year">2024, 2025</div>
+        <div>
+          <div class="cv-title">Teaching Assistant — KT113H Econometrics</div>
+          <div class="cv-sub">Can Tho University (Fall 2024, Fall 2025)</div>
+        </div>
+      </div>
+      <div class="cv-row">
+        <div class="cv-year">2025</div>
+        <div>
+          <div class="cv-title">Teaching Assistant — KT110H Statistics for Business</div>
+          <div class="cv-sub">Can Tho University (Spring 2025)</div>
+        </div>
+      </div>
+      <div class="cv-row">
+        <div class="cv-year">2024</div>
+        <div>
+          <div class="cv-title">Teaching Assistant — KT111H International Economics</div>
+          <div class="cv-sub">Can Tho University (Spring 2024)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cv-block">
+      <div class="cv-heading">Honours &amp; Awards</div>
+      <div class="cv-row">
+        <div class="cv-year">2025</div>
+        <div>
+          <div class="cv-title">Invest Your Talent in Italy Scholarship (€30,000)</div>
+          <div class="cv-sub">Italian Government</div>
+        </div>
+      </div>
+      <div class="cv-row">
+        <div class="cv-year">2025</div>
+        <div>
+          <div class="cv-title">YSEALI Academic Fellows Program ($20,000)</div>
+          <div class="cv-sub">U.S. Department of State</div>
+        </div>
+      </div>
+      <div class="cv-row">
+        <div class="cv-year">2023–2024</div>
+        <div>
+          <div class="cv-title">Small Research Grant ($4,000)</div>
+          <div class="cv-sub">Alliance for Biodiversity &amp; CIAT</div>
+        </div>
+      </div>
+      <div class="cv-row">
+        <div class="cv-year">2022–2024</div>
+        <div>
+          <div class="cv-title">Dean's List ($3,000)</div>
+          <div class="cv-sub">Can Tho University</div>
+        </div>
+      </div>
+      <div class="cv-row">
+        <div class="cv-year">2024</div>
+        <div>
+          <div class="cv-title">Summer School Grant ($1,500)</div>
+          <div class="cv-sub">Brunei Darussalam University &amp; Can Tho University</div>
+        </div>
+      </div>
+      <div class="cv-row">
+        <div class="cv-year">2024</div>
+        <div>
+          <div class="cv-title">Conference Grant ($500)</div>
+          <div class="cv-sub">National Pingtung University, Taiwan</div>
+        </div>
+      </div>
+      <div class="cv-row">
+        <div class="cv-year">2022–2023</div>
+        <div>
+          <div class="cv-title">Undergraduate Research Grant — PI ($800)</div>
+          <div class="cv-sub">Can Tho University</div>
+        </div>
+      </div>
+      <div class="cv-row">
+        <div class="cv-year">2022</div>
+        <div>
+          <div class="cv-title">Conference Grant ($500)</div>
+          <div class="cv-sub">Airlangga University, Indonesia</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cv-block">
+      <div class="cv-heading">Languages &amp; Skills</div>
+      <div style="font-size:15px; line-height:2.1;">
+        <strong>Languages:</strong> English (fluent, IELTS 8.0) &nbsp;·&nbsp; Vietnamese (native) &nbsp;·&nbsp; Italian (basic)<br>
+        <strong>Software:</strong> STATA &nbsp;·&nbsp; Python &nbsp;·&nbsp; R &nbsp;·&nbsp; MATLAB &nbsp;·&nbsp; QGIS &nbsp;·&nbsp; LaTeX
+      </div>
+    </div>
+
+    <div class="cv-block">
+      <div class="cv-heading">References</div>
+      <div class="ref-grid">
+        <div>
+          <div class="ref-name">Assist. Prof. Huiyi Chen</div>
+          <div class="ref-sub">Assistant Professor, Dept. of Economics<br>James Madison University</div>
+          <div class="ref-email" style="margin-top:4px"><a href="mailto:chen9hx@jmu.edu">chen9hx@jmu.edu</a></div>
+        </div>
+        <div>
+          <div class="ref-name">Assoc. Prof. Pham Le Thong</div>
+          <div class="ref-sub">Dean, Faculty of Agricultural Economics<br>Can Tho University</div>
+          <div class="ref-email" style="margin-top:4px"><a href="mailto:plthong@ctu.edu.vn">plthong@ctu.edu.vn</a></div>
+        </div>
+      </div>
+    </div>
+
+    <a class="cv-dl" href="#">Download Full CV (PDF) →</a>
+
+  </div>
+</div>
+
+<script>
+  (function () {
+    function showPage(id) {
+      document.querySelectorAll('.page').forEach(function (p) {
+        p.classList.remove('active');
+      });
+      document.querySelectorAll('#site-nav a').forEach(function (a) {
+        a.classList.remove('active');
+      });
+      var page = document.getElementById('page-' + id);
+      var nav  = document.getElementById('nav-' + id);
+      if (page) page.classList.add('active');
+      if (nav)  nav.classList.add('active');
+      window.scrollTo({ top: 0 });
+    }
+
+    document.querySelectorAll('[data-page]').forEach(function (el) {
+      el.addEventListener('click', function () {
+        showPage(el.getAttribute('data-page'));
+      });
+    });
+
+    document.getElementById('nav-bio').classList.add('active');
+  })();
+</script>
+
+</body>
+</html>
