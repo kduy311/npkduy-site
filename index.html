@@ -73,7 +73,7 @@
     .page.active { display: block; }
 
     .content {
-      max-width: 860px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 64px 48px 120px;
     }
@@ -149,20 +149,21 @@
     .section-heading {
       font-family: "Cormorant Garamond", Georgia, serif;
       font-size: 42px;
-      font-weight: 400;
+      font-weight: 650;
       margin-bottom: 48px;
       line-height: 1.1;
       letter-spacing: -0.01em;
+      text-align: center;
     }
 
     .research-group { margin-bottom: 72px; }
 
     .research-group-label {
-      font-size: 11px;
-      font-weight: 500;
+      font-size: 20px;
+      font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      color: var(--muted);
+      color: var(--text);
       margin-bottom: 32px;
       padding-bottom: 10px;
       border-bottom: 1px solid var(--border);
@@ -172,11 +173,11 @@
 
     .paper-title {
       font-family: "Cormorant Garamond", Georgia, serif;
-      font-size: 22px;
+      font-size: 25px;
       font-weight: 500;
       line-height: 1.35;
       margin-bottom: 8px;
-      text-align: center;
+      text-align: left;
     }
     .paper-title a {
       color: var(--accent);
@@ -186,10 +187,11 @@
     .paper-title a:hover { opacity: 0.7; }
 
     .paper-coauthors {
-      font-size: 14px;
-      text-align: center;
+      font-size: 22px;
+      text-align: left;
       font-style: italic;
       color: var(--muted);
+      display: inline;
       margin-bottom: 6px;
     }
     .paper-coauthors a { color: var(--accent); text-decoration: underline; }
@@ -216,15 +218,40 @@
     .paper-body {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 32px;
+      gap: 28px;
       align-items: start;
+      margin-top: 16px;
     }
     .paper-body.no-figure .paper-abstract { grid-column: 1 / -1; }
-    .paper-figure img { width: 100%; height: auto; display: block; }
+    .paper-body.figure-only { grid-template-columns: 1fr; max-width: 520px; }
+    .paper-body.figure-only .paper-figure { width: 100%; }
+
+    .paper-figure {
+  width: 100%;
+  order: -1;          
+}
+.paper-figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+    .figure-placeholder {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      border: 2px dashed var(--border);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 14px;
+      background: #fafaf8;
+    }
 
     .paper-abstract {
       font-size: 15px;
-      line-height: 1.8;
+      line-height: 1.75;
       color: #333;
     }
 
@@ -235,6 +262,30 @@
       line-height: 1.65;
     }
     .paper-presentations strong { color: var(--text); }
+
+    /* ════ SUB-TABS ════ */
+    .sub-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-bottom: 40px;
+    }
+    .sub-tabs a {
+      font-size: 15px;
+      color: var(--muted);
+      cursor: pointer;
+      padding-bottom: 4px;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .sub-tabs a.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+    .sub-tabs a:hover { color: var(--accent); }
+
+    .sub-group { display: none; }
+    .sub-group.active { display: block; }
 
     /* ════ TEACHING ════ */
     .teaching-entry {
@@ -259,6 +310,42 @@
       margin-bottom: 10px;
     }
     .teaching-desc { font-size: 15px; line-height: 1.75; color: #333; }
+
+    /* ════ ACHIEVEMENT ════ */
+    .achievement-list { max-width: 720px; }
+
+    .achievement-item {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 16px;
+      margin-bottom: 36px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid var(--border);
+    }
+    .achievement-item:last-child { border-bottom: none; }
+
+    .achievement-year {
+      font-size: 13px;
+      color: var(--muted);
+      padding-top: 3px;
+    }
+    .achievement-title {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 1.35;
+      margin-bottom: 4px;
+    }
+    .achievement-org {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .achievement-desc {
+      font-size: 14.5px;
+      line-height: 1.7;
+      color: #333;
+    }
 
     /* ════ CV ════ */
     .cv-block { margin-bottom: 44px; }
@@ -297,9 +384,9 @@
       font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 0.09em;
-      color: var(--text);
+      color: var(--accent);
       text-decoration: none;
-      border-bottom: 1px solid var(--text);
+      border-bottom: 1px solid var(--accent);
       padding-bottom: 2px;
       margin-top: 8px;
       transition: opacity 0.15s;
@@ -327,6 +414,7 @@
       .content { padding: 40px 20px 80px; }
       .paper-body { grid-template-columns: 1fr; }
       .cv-row { grid-template-columns: 72px 1fr; }
+      .achievement-item { grid-template-columns: 72px 1fr; }
       .ref-grid { grid-template-columns: 1fr; }
       .bio-name { font-size: 38px; }
     }
@@ -335,54 +423,43 @@
 <body>
 
 <header id="site-header">
-  <div id="site-name" data-page="bio">Khanh-Duy Nguyen Phan</div>
+  <div id="site-name" data-page="home">Khanh&#x2013;Duy Nguyen Phan</div>
   <nav id="site-nav">
-    <a id="nav-bio"      data-page="bio">Bio</a>
-    <a id="nav-research" data-page="research">Research</a>
-    <a id="nav-teaching" data-page="teaching">Teaching</a>
-    <a id="nav-cv"       data-page="cv">CV</a>
+    <a id="nav-home"        data-page="home">Home</a>
+    <a id="nav-research"    data-page="research">Research</a>
+    <a id="nav-teaching"    data-page="teaching">Teaching</a>
+    <a id="nav-achievement" data-page="achievement">Achievement</a>
+    <a id="nav-cv"          data-page="cv">CV</a>
   </nav>
 </header>
 
 <!-- ════ BIO ════ -->
-<div class="page active" id="page-bio">
+<div class="page active" id="page-home">
   <div class="content">
 
     <div class="bio-photo-wrap">
       <div class="photo">
-  <img src="photo.jpg" alt="Khanh-Duy Nguyen Phan">
-</div>
+        <img src="photo.jpg" alt="Khanh-Duy Nguyen Phan">
+      </div>
     </div>
 
     <div class="bio-text">
-      <div class="bio-name">Khanh-Duy Nguyen Phan</div>
-      <div class="bio-role">Master's Student · University of Padova &nbsp;·&nbsp; Research Assistant · James Madison University</div>
+      <div class="bio-name">Khanh&#x2013;Duy Nguyen Phan</div>
 
       <p>
         I am a Master's student in Applied Economics (Digital Economics track) at the
-        <strong>University of Padova</strong>, Italy, and a Research Assistant at
-        <strong>James Madison University</strong> under Assist. Prof. Huiyi Chen.
+        University of Padova, Italy. I hold a Bachelor's degree in International Business
+        (<em>Honours, Summa Cum Laude</em>) from Can Tho University, Viet Nam.
       </p>
       <p>
         My fields of interest include <strong>Digital Economics</strong>,
         <strong>Environmental Economics</strong>, and <strong>Political Economy</strong>.
       </p>
-      <p>
-        My research explores the intersection of labour markets, technology, and political economy
-        in emerging economies. I am particularly interested in how social media, digital platforms,
-        and institutional environments shape collective action and economic outcomes.
-      </p>
-      <p>
-        I hold a Bachelor's degree in International Business
-        (<em>Honours, Summa Cum Laude</em>) from Can Tho University, Vietnam.
-      </p>
+        Contact: im.kduy@gmail.com
 
       <div class="bio-links">
-        <a href="mailto:phankhanhduy.nguyen@studenti.unipd.it">Email</a>
-        <a href="#">CV</a>
-        <a href="#">Google Scholar</a>
+        <a href="mailto:im.kduy@gmail.com">Email</a>
         <a href="https://www.linkedin.com/in/npkduy311" target="_blank">LinkedIn</a>
-        <a href="#">GitHub</a>
       </div>
     </div>
 
@@ -396,46 +473,43 @@
     <div class="section-heading">Research</div>
 
     <div class="research-group">
-      <div class="research-group-label">Working Papers</div>
+      <div class="research-group-label">Working Paper</div>
 
       <div class="paper">
         <div class="paper-title">
-          <a href="#">Social Networks and the Spread of Labour Strikes</a>
+          <strong>Technology Spillovers from Special Economic Zones to Local Firms</strong>
+          <span class="paper-coauthors">(with Associate Professor <a href="https://sites.google.com/site/singhalecon/Home?authuser=1" target="_blank">Saurabh Singal</a>)</span>
         </div>
-        <div class="paper-coauthors">
-          (with <a href="https://www.hui-yi-chen.com/" target="_blank">Assist. Prof. Huiyi Chen</a>)
-        </div>
-        <div class="paper-journal">Work in Progress</div>
-        <div class="paper-body no-figure">
-          <div class="paper-abstract">
-            This paper examines the role of social media and online networks in the diffusion
-            of labour strikes in the United States. Using the Cornell ILR School's Labor Action
-            Tracker enriched with social media engagement variables — Facebook likes, followers,
-            and group members — collected via custom Python web-scraping scripts, we study how
-            online visibility and network exposure shape the timing, spread, and intensity of
-            strike activity. The analysis leverages a panel of over 20 million observations and
-            exploits variation in social media engagement across labour union strikes.
-            <div class="paper-presentations">
-              <strong>Data collection:</strong> Facebook engagement indicators for each strike
-              event in the Cornell ILR Labor Action Tracker, 2021–present.
-            </div>
+        <div class="paper-journal" style="font-family:'DM Sans',sans-serif; text-align:left; font-size:15px; font-style:normal;color:#333;">Forthcoming</div>
+      </div>
+      <div class="paper">
+        <div class="paper-title">
+          <strong>Can Trade Policy Separate Pirates from Piracy? Supply&#x2013;Side Shutdowns and Demand&#x2013;Side Enforcement in Online Copyright Markets</strong>
           </div>
-        </div>
+        <div class="paper-journal" style="font-family:'DM Sans',sans-serif; text-align:left; font-size:15px; font-style:normal;color:#333;">Forthcoming</div>
       </div>
 
       <div class="paper">
         <div class="paper-title">
-          <a href="#">Impact of Sustainable Mangrove–Shrimp Farming Innovations on Fish Farmer Welfare</a>
+          <a href="#">Digital Adoption, Operational Depth, and Firm Productivity: Evidence from Vietnamese Manufacturing</a>
         </div>
-        <div class="paper-coauthors">Research conducted at <a href="#">GIZ Vietnam</a></div>
-        <div class="paper-journal">Work in Progress</div>
-        <div class="paper-body no-figure">
+        <div class="paper-body">
           <div class="paper-abstract">
-            This paper estimates the causal impact of sustainable mangrove–shrimp farming
-            innovations on the welfare of fish farmers in the Mekong Delta, Vietnam. Using a
-            Difference-in-Differences design applied to a panel database of 300+ fish farmers,
-            the study evaluates outcomes aligned with SDG 2 (Zero Hunger). Conducted in
-            collaboration with the Deutsche Gesellschaft für Internationale Zusammenarbeit (GIZ).
+                This paper examines the relationship between digital technology adoption
+  and firm productivity in Vietnamese manufacturing. Using administrative
+  data on 59,000 firms from Viet Nam's 2020 Enterprise Survey, we construct
+  a Digital Adoption Index (DAI, 0–7) and decompose it into
+  connectivity readiness (internet, e-commerce, website) and operational
+  depth (software, automation, IT investment). A one-unit DAI increase is
+  associated with a 3.5% increase in total factor productivity. The
+  decomposition reveals that the entire effect comes from operational depth, while connectivity readiness
+  contributes nothing. Connectivity does predict operational depth, consistent with a technology ladder
+  where basic access is necessary but insufficient. The digital-productivity
+  gradient is steepest for large and foreign-invested firms, but
+  insignificant for small firms.
+          </div>
+          <div class="paper-figure">
+            <img src="dsa_map.png" alt="Digital Sophistication across Vietnamese provinces">
           </div>
         </div>
       </div>
@@ -448,203 +522,79 @@
 <div class="page" id="page-teaching">
   <div class="content">
 
-    <div class="section-heading">Teaching</div>
+    <div class="section-heading">Teaching &amp; Research</div>
 
-    <div class="teaching-entry">
-      <div class="teaching-course">KT113H Econometrics</div>
-      <div class="teaching-role">Teaching Assistant · Can Tho University · Fall 2024, Fall 2025</div>
-      <div class="teaching-desc">
-        Undergraduate econometrics course covering OLS estimation, hypothesis testing,
-        panel data methods, and instrumental variables. Conducted weekly tutorials and
-        held office hours for students.
-      </div>
+    <div class="sub-tabs" id="teaching-tabs">
+      <a class="active" data-subtab="ta">Teaching Assistant</a>
+      <a data-subtab="ra">Research Assistant</a>
     </div>
 
-    <div class="teaching-entry">
-      <div class="teaching-course">KT111H International Economics</div>
-      <div class="teaching-role">Teaching Assistant · Can Tho University · Spring 2024</div>
-      <div class="teaching-desc">
-        Undergraduate course covering trade theory, international factor movements,
-        exchange rate determination, and trade policy. Assisted with grading and
-        led weekly discussion sections.
-      </div>
+ <div class="sub-group active" id="subtab-ta">
+
+      <h3 style="text-align:center; margin:32px 0 16px;">Can Tho University</h3>
+      <ul style="font-size:17px; line-height:2;">
+        <li>Teaching Assistant, KT113H Econometrics (Fall 2024, Fall 2025)</li>
+        <li>Teaching Assistant, KT110H Statistics for Business (Spring 2025)</li>
+        <li>Teaching Assistant, KT111H International Economics (Spring 2024)</li>
+      </ul>
+
     </div>
 
-    <div class="teaching-entry">
-      <div class="teaching-course">KT110H Statistics for Business</div>
-      <div class="teaching-role">Teaching Assistant · Can Tho University · Spring 2025</div>
-      <div class="teaching-desc">
-        Undergraduate statistics course covering probability theory, descriptive statistics,
-        sampling distributions, and hypothesis testing. Supported students through
-        weekly tutorials and graded problem sets.
-      </div>
+<div class="sub-group" id="subtab-ra">
+
+      <h3 style="text-align:center; margin:32px 0 16px;">University of Padova</h3>
+      <p style="font-size:16px; color:#555; margin-bottom:8px;">Research Assistant for Associate Professor <a href="https://leonardomadio.me/" target="_blank">Leonardo Madio</a> (May 2026 – Present) </p>
+      <ul style="font-size:15px; line-height:1.9;"></ul>
+      <li>Collected and structured Digital Service Acts compliance data across designated Very Large Online Platforms (VLOPs) to track changes in platform governance practices.</li>
+      <li>Produced descriptive visualisations and summary statistics on moderation counts by platform to document heterogeneity in compliance responses.</li>
+       </ul>
+      <h3 style="text-align:center; margin:32px 0 16px;">James Madison University</h3>
+      <p style="font-size:16px; color:#555; margin-bottom:8px;">Research Assistant for Assistant Professor <a href="https://www.hui-yi-chen.com/" target="_blank">Huiyi Chen</a> (April 2025 – April 2026)</p>
+      <ul style="font-size:15px; line-height:1.9;">
+        <li>Built custom Python scripts to crawl and extract social media engagement indicators (Facebook likes, followers, group members) for each labour union strike, enriching the Cornell ILR School's Labor Action Tracker dataset.</li>
+        <li>Processed and analysed a preliminary panel dataset of over 20 million observations using STATA.</li>
+      </ul>
+
+      <h3 style="text-align:center; margin:32px 0 16px;">Can Tho University</h3>
+      <p style="font-size:16px; color:#555; margin-bottom:8px;">Research Assistant for Associate Professor Pham Le Thong (October 2022 – March 2025) </p>
+      <ul style="font-size:15px; line-height:1.9;">
+        <li>Led 5 research projects funded by USAID, the Alliance for Biodiversity &amp; CIAT, and the Vietnamese Ministry of Education and Training.</li>
+        <li>Designed survey questionnaires, cleaned and analysed datasets using STATA, visualised data using R.</li>
+        <li>Prepared and formatted manuscripts for journal submission.</li>
+      </ul>
+
     </div>
+
+  </div>
+</div>
+
+<!-- ════ ACHIEVEMENT ════ -->
+<div class="page" id="page-achievement">
+  <div class="content">
+
+    <div class="section-heading">Honours &amp; Awards</div>
+
+<ul style="font-size:17px; line-height:2.2;">
+      <li>Invest Your Talent in Italy Scholarship (€30,000), 2025–2027</li>
+      <li>YSEALI Academic Fellows Program ($20,000), 2025</li>
+      <li>Conference Grant — National Pingtung University, Taiwan ($500), 2024</li>
+      <li>AUN Summer Camp — Brunei Darussalam University ($1,500), 2024</li>
+      <li>Small Grant Winner — Sustainable Healthy Diets through Food Systems Transformation ($4,000), 2023–2024</li>
+      <li>Distinguished Achievement Award & Dean's List, Can Tho University ($3,000), 2022–2024</li>
+      <li>Undergraduate Research Grant — Principal Investigator ($800), 2022–2023</li>
+      <li>Conference Grant — Airlangga University, Indonesia ($500), 2022</li>
+    </ul>
 
   </div>
 </div>
 
 <!-- ════ CV ════ -->
 <div class="page" id="page-cv">
-  <div class="content">
+  <div class="content" style="text-align:center;">
 
     <div class="section-heading">Curriculum Vitae</div>
 
-    <div class="cv-block">
-      <div class="cv-heading">Education</div>
-      <div class="cv-row">
-        <div class="cv-year">2025–present</div>
-        <div>
-          <div class="cv-title">Master's in Applied Economics (Digital Economics track)</div>
-          <div class="cv-sub">University of Padova, Italy &nbsp;·&nbsp; GPA: 30/30</div>
-        </div>
-      </div>
-      <div class="cv-row">
-        <div class="cv-year">2020–2025</div>
-        <div>
-          <div class="cv-title">Bachelor's in International Business (Honours), <em>Summa Cum Laude</em></div>
-          <div class="cv-sub">Can Tho University, Vietnam &nbsp;·&nbsp; GPA: 3.94/4.0</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="cv-block">
-      <div class="cv-heading">Research &amp; Professional Experience</div>
-      <div class="cv-row">
-        <div class="cv-year">Apr 2025–present</div>
-        <div>
-          <div class="cv-title">Research Assistant — James Madison University</div>
-          <div class="cv-sub">Supervisor: Assist. Prof. Huiyi Chen</div>
-          <div class="cv-desc">Built Python scripts to crawl social media engagement indicators for labour union strikes, enriching the Cornell ILR Labor Action Tracker. Processed and analysed a panel of 20M+ observations in STATA.</div>
-        </div>
-      </div>
-      <div class="cv-row">
-        <div class="cv-year">Jul 2024–Jan 2025</div>
-        <div>
-          <div class="cv-title">Research Intern — GIZ</div>
-          <div class="cv-sub">Deutsche Gesellschaft für Internationale Zusammenarbeit</div>
-          <div class="cv-desc">Applied a Difference-in-Differences design on a panel of 300+ fish farmers to estimate the impact of sustainable mangrove–shrimp farming innovations (SDG 2). Prepared policy briefs, translation, budgeting, and event planning.</div>
-        </div>
-      </div>
-      <div class="cv-row">
-        <div class="cv-year">Oct 2022–Jul 2024</div>
-        <div>
-          <div class="cv-title">Research Assistant — Can Tho University</div>
-          <div class="cv-sub">Supervisors: Assoc. Prof. Pham Le Thong, Assoc. Prof. Phan Anh Tu</div>
-          <div class="cv-desc">Worked on 5 research projects funded by USAID and the Vietnamese Ministry of Education. Designed surveys, cleaned and analysed datasets, created visualisations, and prepared journal submissions.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="cv-block">
-      <div class="cv-heading">Teaching Experience</div>
-      <div class="cv-row">
-        <div class="cv-year">2024, 2025</div>
-        <div>
-          <div class="cv-title">Teaching Assistant — KT113H Econometrics</div>
-          <div class="cv-sub">Can Tho University (Fall 2024, Fall 2025)</div>
-        </div>
-      </div>
-      <div class="cv-row">
-        <div class="cv-year">2025</div>
-        <div>
-          <div class="cv-title">Teaching Assistant — KT110H Statistics for Business</div>
-          <div class="cv-sub">Can Tho University (Spring 2025)</div>
-        </div>
-      </div>
-      <div class="cv-row">
-        <div class="cv-year">2024</div>
-        <div>
-          <div class="cv-title">Teaching Assistant — KT111H International Economics</div>
-          <div class="cv-sub">Can Tho University (Spring 2024)</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="cv-block">
-      <div class="cv-heading">Honours &amp; Awards</div>
-      <div class="cv-row">
-        <div class="cv-year">2025</div>
-        <div>
-          <div class="cv-title">Invest Your Talent in Italy Scholarship (€30,000)</div>
-          <div class="cv-sub">Italian Government</div>
-        </div>
-      </div>
-      <div class="cv-row">
-        <div class="cv-year">2025</div>
-        <div>
-          <div class="cv-title">YSEALI Academic Fellows Program ($20,000)</div>
-          <div class="cv-sub">U.S. Department of State</div>
-        </div>
-      </div>
-      <div class="cv-row">
-        <div class="cv-year">2023–2024</div>
-        <div>
-          <div class="cv-title">Small Research Grant ($4,000)</div>
-          <div class="cv-sub">Alliance for Biodiversity &amp; CIAT</div>
-        </div>
-      </div>
-      <div class="cv-row">
-        <div class="cv-year">2022–2024</div>
-        <div>
-          <div class="cv-title">Dean's List ($3,000)</div>
-          <div class="cv-sub">Can Tho University</div>
-        </div>
-      </div>
-      <div class="cv-row">
-        <div class="cv-year">2024</div>
-        <div>
-          <div class="cv-title">Summer School Grant ($1,500)</div>
-          <div class="cv-sub">Brunei Darussalam University &amp; Can Tho University</div>
-        </div>
-      </div>
-      <div class="cv-row">
-        <div class="cv-year">2024</div>
-        <div>
-          <div class="cv-title">Conference Grant ($500)</div>
-          <div class="cv-sub">National Pingtung University, Taiwan</div>
-        </div>
-      </div>
-      <div class="cv-row">
-        <div class="cv-year">2022–2023</div>
-        <div>
-          <div class="cv-title">Undergraduate Research Grant — PI ($800)</div>
-          <div class="cv-sub">Can Tho University</div>
-        </div>
-      </div>
-      <div class="cv-row">
-        <div class="cv-year">2022</div>
-        <div>
-          <div class="cv-title">Conference Grant ($500)</div>
-          <div class="cv-sub">Airlangga University, Indonesia</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="cv-block">
-      <div class="cv-heading">Languages &amp; Skills</div>
-      <div style="font-size:15px; line-height:2.1;">
-        <strong>Languages:</strong> English (fluent, IELTS 8.0) &nbsp;·&nbsp; Vietnamese (native) &nbsp;·&nbsp; Italian (basic)<br>
-        <strong>Software:</strong> STATA &nbsp;·&nbsp; Python &nbsp;·&nbsp; R &nbsp;·&nbsp; MATLAB &nbsp;·&nbsp; QGIS &nbsp;·&nbsp; LaTeX
-      </div>
-    </div>
-
-    <div class="cv-block">
-      <div class="cv-heading">References</div>
-      <div class="ref-grid">
-        <div>
-          <div class="ref-name">Assist. Prof. Huiyi Chen</div>
-          <div class="ref-sub">Assistant Professor, Dept. of Economics<br>James Madison University</div>
-          <div class="ref-email" style="margin-top:4px"><a href="mailto:chen9hx@jmu.edu">chen9hx@jmu.edu</a></div>
-        </div>
-        <div>
-          <div class="ref-name">Assoc. Prof. Pham Le Thong</div>
-          <div class="ref-sub">Dean, Faculty of Agricultural Economics<br>Can Tho University</div>
-          <div class="ref-email" style="margin-top:4px"><a href="mailto:plthong@ctu.edu.vn">plthong@ctu.edu.vn</a></div>
-        </div>
-      </div>
-    </div>
-
-    <a class="cv-dl" href="#">Download Full CV (PDF) →</a>
+    <a class="cv-dl" href="https://www.dropbox.com/scl/fi/suuu0ksl7lb979dxaty2b/CV_NGUYEN-Phan-Khanh-Duy-00.38.43.pdf?rlkey=9kwtn2dbe5hfq6itnzcnhf4ll&st=vkxxd5r8&dl=0" target="_blank">Download here →</a>
 
   </div>
 </div>
@@ -671,7 +621,23 @@
       });
     });
 
-    document.getElementById('nav-bio').classList.add('active');
+    document.getElementById('nav-home').classList.add('active');
+
+    /* Sub-tab toggle */
+    document.querySelectorAll('.sub-tabs a').forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        var parent = tab.closest('.sub-tabs');
+        var page   = tab.closest('.page');
+        var target = tab.getAttribute('data-subtab');
+
+        parent.querySelectorAll('a').forEach(function (t) { t.classList.remove('active'); });
+        tab.classList.add('active');
+
+        page.querySelectorAll('.sub-group').forEach(function (g) { g.classList.remove('active'); });
+        var el = document.getElementById('subtab-' + target);
+        if (el) el.classList.add('active');
+      });
+    });
   })();
 </script>
 
