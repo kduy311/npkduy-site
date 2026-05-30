@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Khanh-Duy Nguyen Phan</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -54,7 +58,7 @@
 
     #site-nav a {
       font-family: "DM Sans", sans-serif;
-      font-size: 11.5px;
+      font-size: 13px;
       font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 0.1em;
@@ -134,18 +138,12 @@
       margin-top: 32px;
     }
     .bio-links a {
-      font-size: 11.5px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
       color: var(--text);
+      font-weight: 600;
+      font-size: 15px;
       text-decoration: none;
-      border-bottom: 1px solid var(--text);
-      padding-bottom: 1px;
       transition: opacity 0.15s;
     }
-    .bio-links a:hover { opacity: 0.5; }
-
     /* ════ RESEARCH ════ */
     .section-heading {
       font-family: "Cormorant Garamond", Georgia, serif;
@@ -160,8 +158,9 @@
     .research-group { margin-bottom: 72px; }
 
     .research-group-label {
+      font-family: "Cormorant Garamond", Georgia, serif;
       font-size: 20px;
-      font-weight: 600;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.12em;
       color: var(--text);
@@ -430,8 +429,8 @@
   <div id="site-name" data-page="home">Khanh&#x2013;Duy Nguyen Phan</div>
   <nav id="site-nav">
     <a id="nav-home"        data-page="home">Home</a>
-    <a id="nav-research"    data-page="research">Research</a>
-    <a id="nav-teaching"    data-page="teaching">Teaching</a>
+    <a id="nav-research"    data-page="research">Paper</a>
+    <a id="nav-teaching"    data-page="teaching">Research</a>
     <a id="nav-achievement" data-page="achievement">Achievement</a>
     <a id="nav-cv"          data-page="cv">CV</a>
   </nav>
@@ -462,8 +461,12 @@
         Contact: im.kduy@gmail.com
 
       <div class="bio-links">
-        <a href="mailto:im.kduy@gmail.com">Email</a>
-        <a href="https://www.linkedin.com/in/npkduy311" target="_blank">LinkedIn</a>
+        <a href="mailto:im.kduy@gmail.com">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D44638" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px; margin-right:4px;"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>Email
+        </a>
+        <a href="https://www.linkedin.com/in/npkduy311" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#0A66C2" style="vertical-align:-2px; margin-right:4px;"><path d="M20.47 2H3.53A1.45 1.45 0 0 0 2 3.47v17.06A1.45 1.45 0 0 0 3.47 22h17.06A1.45 1.45 0 0 0 22 20.53V3.47A1.45 1.45 0 0 0 20.47 2ZM8.09 18.74h-3v-9h3v9ZM6.59 8.48a1.56 1.56 0 1 1 0-3.12 1.56 1.56 0 0 1 0 3.12Zm12.32 10.26h-3v-4.83c0-1.21-.43-2-1.52-2A1.65 1.65 0 0 0 12.85 13a2 2 0 0 0-.1.73v5h-3v-9h3v1.2a3 3 0 0 1 2.71-1.5c2 0 3.45 1.29 3.45 4.06v5.25Z"/></svg>LinkedIn
+        </a>
       </div>
     </div>
 
@@ -474,7 +477,7 @@
 <div class="page" id="page-research">
   <div class="content">
 
-    <div class="section-heading">Research</div>
+    <div class="section-heading">Paper</div>
 
     <div class="research-group">
       <div class="research-group-label">Working Paper</div>
@@ -526,7 +529,7 @@
 <div class="page" id="page-teaching">
   <div class="content">
 
-    <div class="section-heading">Teaching</div>
+    <div class="section-heading">Research</div>
 
     <div class="sub-tabs" id="teaching-tabs">
       <a class="active" data-subtab="ra">Research Assistant</a>
