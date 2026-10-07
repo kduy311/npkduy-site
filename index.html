@@ -110,7 +110,7 @@
       font-size: 52px;
       font-weight: 400;
       line-height: 1.1;
-      margin-bottom: 8px;
+      margin-bottom: 28px;
       letter-spacing: -0.01em;
     }
 
@@ -174,7 +174,7 @@
     .paper-title {
       font-family: "Cormorant Garamond", Georgia, serif;
       font-size: 25px;
-      font-weight: 350;
+      font-weight: 500;
       line-height: 1.35;
       margin-bottom: 8px;
       text-align: left;
@@ -187,14 +187,20 @@
     .paper-title a:hover { opacity: 0.7; }
 
     .paper-coauthors {
-      font-size: 22px;
-      font-style: italic;
-      color: var(--muted);
-      display: inline;
-      margin-left: 6px;
+      display: block;
+      font-family: "DM Sans", sans-serif;
+      font-size: 15px;
+      font-style: normal;
       font-weight: 400;
+      color: var(--muted);
+      margin-top: 4px;
     }
-    .paper-coauthors a { color: var(--accent); text-decoration: underline; }
+    .paper-coauthors a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .paper-coauthors a:hover { opacity: 0.7; }
 
     .paper-journal {
       font-family: "Cormorant Garamond", Georgia, serif;
@@ -411,6 +417,74 @@
     .ref-sub { color: var(--muted); font-size: 13px; }
     .ref-email a { color: var(--accent); text-decoration: underline; font-size: 13px; }
 
+    /* ════ EXPERIENCE (Research tab) ════ */
+    .exp-entry {
+      max-width: 820px;
+      margin: 0 auto 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+    }
+    .exp-entry:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .exp-org {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+
+    .exp-role {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 4px 16px;
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .exp-date { font-size: 13px; letter-spacing: 0.04em; white-space: nowrap; }
+    .exp-role a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .exp-role a:hover { opacity: 0.7; }
+
+    .exp-list {
+      padding-left: 20px;
+      font-size: 15px;
+      line-height: 1.75;
+      color: #333;
+    }
+    .exp-list li { margin-bottom: 6px; }
+    .exp-list li::marker { color: var(--muted); }
+
+    /* ════ AWARDS (same layout as the CV) ════ */
+    .award-list {
+      max-width: 820px;
+      margin: 0 auto;
+      padding-left: 22px;
+    }
+    .award-list li { margin-bottom: 22px; padding-left: 4px; }
+    .award-list li::marker { color: var(--muted); font-size: 15px; }
+    .award-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 2px 16px;
+    }
+    .award-title {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 21px;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+    .award-year { font-size: 13px; letter-spacing: 0.04em; color: var(--muted); white-space: nowrap; }
+    .award-desc { font-size: 15px; color: var(--muted); line-height: 1.6; }
+
     @media (max-width: 640px) {
       #site-header { padding: 18px 20px; flex-wrap: wrap; gap: 14px; }
       #site-nav { gap: 18px; }
@@ -448,17 +522,19 @@
 
     <div class="bio-text">
       <div class="bio-name">Khanh&#x2013;Duy Nguyen Phan</div>
+      <p>
 
+Welcome to my website!
+      </p>
       <p>
         I am a Master's student in Applied Economics (Digital Economics track) at the
-        University of Padova, Italy. I hold a Bachelor's degree in International Business
-        (<em>Honours, Summa Cum Laude</em>) from Can Tho University, Viet Nam.
+        University of Padova.
       </p>
       <p>
         My fields of interest include <strong>Digital Economics</strong>,
-        <strong>Environmental Economics</strong>, and <strong>Political Economy</strong>.
+        <strong>Industrial Organization</strong>, and <strong>Political Economy</strong>.
       </p>
-        Contact: im.kduy@gmail.com
+        <strong>Contact</strong>: im.kduy@gmail.com
 
       <div class="bio-links">
         <a href="mailto:im.kduy@gmail.com">
@@ -484,40 +560,19 @@
 
       <div class="paper">
         <div class="paper-title">
-          <strong>Technology Spillovers from Special Economic Zones to Local Firms</strong>
-          <span class="paper-coauthors">(with Associate Professor <a href="https://sites.google.com/site/singhalecon/Home?authuser=1" target="_blank">Saurabh Singhal</a>)</span>
+          Technology Spillovers from Special Economic Zones to Local Firms
+          <span class="paper-coauthors">with <a href="https://sites.google.com/site/singhalecon/Home?authuser=1" target="_blank">Saurabh Singhal</a></span>
         </div>
-        <div class="paper-journal" style="font-family:'DM Sans',sans-serif; text-align:left; font-size:15px; font-style:normal;color:#333;">Forthcoming</div>
       </div>
       <div class="paper">
         <div class="paper-title">
-          <strong>Can Trade Policy Separate Pirates from Piracy? Supply&#x2013;Side Shutdowns and Demand&#x2013;Side Enforcement in Online Copyright Markets</strong>
-          </div>
-        <div class="paper-journal" style="font-family:'DM Sans',sans-serif; text-align:left; font-size:15px; font-style:normal;color:#333;">Forthcoming</div>
+          Who Answers When Access Is Restricted?
+          <span class="paper-coauthors">with <a href="https://leonardomadio.me/" target="_blank">Leonardo Madio</a></span>
+        </div>
       </div>
-
       <div class="paper">
         <div class="paper-title">
-          <a href="#">Digital Adoption, Operational Depth, and Firm Productivity: Evidence from Vietnamese Manufacturing</a>
-        </div>
-        <div class="paper-body">
-          <div class="paper-abstract">
-                This paper examines the relationship between digital technology adoption
-  and firm productivity in Vietnamese manufacturing. Using administrative
-  data on 59,000 firms from Viet Nam's 2020 Enterprise Survey, we construct
-  a Digital Adoption Index (DAI, 0–7) and decompose it into
-  connectivity readiness (internet, e-commerce, website) and operational
-  depth (software, automation, IT investment). A one-unit DAI increase is
-  associated with a 3.5% increase in total factor productivity. The
-  decomposition reveals that the entire effect comes from operational depth, while connectivity readiness
-  contributes nothing. Connectivity does predict operational depth, consistent with a technology ladder
-  where basic access is necessary but insufficient. The digital-productivity
-  gradient is steepest for large and foreign-invested firms, but
-  insignificant for small firms.
-          </div>
-          <div class="paper-figure">
-            <img src="dsa_map.png" alt="Digital Sophistication across Vietnamese provinces">
-          </div>
+          Cheap to Make, Hard to Leave? Generative AI and Short&#x2013;Form Video
         </div>
       </div>
 
@@ -536,39 +591,57 @@
       <a data-subtab="ta">Teaching Assistant</a>
     </div>
 
- <div class="sub-group" id="subtab-ta">
+    <div class="sub-group" id="subtab-ta">
 
-      <h3 style="text-align:center; margin:32px 0 16px;">Can Tho University</h3>
-      <ul style="font-size:17px; line-height:2;">
-        <li>Teaching Assistant, KT113H Econometrics (Fall 2024, Fall 2025)</li>
-        <li>Teaching Assistant, KT110H Statistics for Business (Spring 2025)</li>
-        <li>Teaching Assistant, KT111H International Economics (Spring 2024)</li>
-      </ul>
+      <div class="exp-entry">
+        <div class="exp-org">Can Tho University</div>
+        <ul class="exp-list">
+          <li>Teaching Assistant, KT113H Econometrics (Fall 2024, Fall 2025)</li>
+          <li>Teaching Assistant, KT110H Statistics for Business (Spring 2025)</li>
+          <li>Teaching Assistant, KT111H International Economics (Spring 2024)</li>
+        </ul>
+      </div>
 
     </div>
 
-<div class="sub-group active" id="subtab-ra">
+    <div class="sub-group active" id="subtab-ra">
 
-      <h3 style="text-align:center; margin:32px 0 16px;">University of Padova</h3>
-      <p style="font-size:16px; color:#555; margin-bottom:8px;">Research Assistant for Associate Professor <a href="https://leonardomadio.me/" target="_blank">Leonardo Madio</a> (May 2026 – Present) </p>
-      <ul style="font-size:15px; line-height:1.9;"></ul>
-      <li>Collected and structured Digital Service Acts compliance data across designated Very Large Online Platforms (VLOPs) to track changes in platform governance practices.</li>
-      <li>Produced descriptive visualisations and summary statistics on moderation counts by platform to document heterogeneity in compliance responses.</li>
-       </ul>
-      <h3 style="text-align:center; margin:32px 0 16px;">James Madison University</h3>
-      <p style="font-size:16px; color:#555; margin-bottom:8px;">Research Assistant for Assistant Professor <a href="https://www.hui-yi-chen.com/" target="_blank">Huiyi Chen</a> (April 2025 – April 2026)</p>
-      <ul style="font-size:15px; line-height:1.9;">
-        <li>Built custom Python scripts to crawl and extract social media engagement indicators (Facebook likes, followers, group members) for each labour union strike, enriching the Cornell ILR School's Labor Action Tracker dataset.</li>
-        <li>Processed and analysed a preliminary panel dataset of over 20 million observations using STATA.</li>
-      </ul>
+      <div class="exp-entry">
+        <div class="exp-org">University of Padova</div>
+        <div class="exp-role">
+          <span>Research Assistant for Associate Professor <a href="https://leonardomadio.me/" target="_blank">Leonardo Madio</a></span>
+          <span class="exp-date">May 2026 – Present</span>
+        </div>
+        <ul class="exp-list">
+          <li>Collected and structured Digital Service Acts compliance data across designated Very Large Online Platforms (VLOPs) to track changes in platform governance practices.</li>
+          <li>Produced descriptive visualisations and summary statistics on moderation counts by platform to document heterogeneity in compliance responses.</li>
+        </ul>
+      </div>
 
-      <h3 style="text-align:center; margin:32px 0 16px;">Can Tho University</h3>
-      <p style="font-size:16px; color:#555; margin-bottom:8px;">Research Assistant for Associate Professor Pham Le Thong (October 2022 – March 2025) </p>
-      <ul style="font-size:15px; line-height:1.9;">
-        <li>Led 5 research projects funded by USAID, the Alliance for Biodiversity &amp; CIAT, and the Vietnamese Ministry of Education and Training.</li>
-        <li>Designed survey questionnaires, cleaned and analysed datasets using STATA, visualised data using R.</li>
-        <li>Prepared and formatted manuscripts for journal submission.</li>
-      </ul>
+      <div class="exp-entry">
+        <div class="exp-org">James Madison University</div>
+        <div class="exp-role">
+          <span>Research Assistant for Assistant Professor <a href="https://www.hui-yi-chen.com/" target="_blank">Huiyi Chen</a></span>
+          <span class="exp-date">April 2025 – April 2026</span>
+        </div>
+        <ul class="exp-list">
+          <li>Built custom Python scripts to crawl and extract social media engagement indicators (Facebook likes, followers, group members) for each labour union strike, enriching the Cornell ILR School's Labor Action Tracker dataset.</li>
+          <li>Processed and analysed a preliminary panel dataset of over 20 million observations using STATA.</li>
+        </ul>
+      </div>
+
+      <div class="exp-entry">
+        <div class="exp-org">Can Tho University</div>
+        <div class="exp-role">
+          <span>Research Assistant for Associate Professor Pham Le Thong</span>
+          <span class="exp-date">October 2022 – March 2025</span>
+        </div>
+        <ul class="exp-list">
+          <li>Led 5 research projects funded by USAID, the Alliance for Biodiversity &amp; CIAT, and the Vietnamese Ministry of Education and Training.</li>
+          <li>Designed survey questionnaires, cleaned and analysed datasets using STATA, visualised data using R.</li>
+          <li>Prepared and formatted manuscripts for journal submission.</li>
+        </ul>
+      </div>
 
     </div>
 
@@ -579,18 +652,66 @@
 <div class="page" id="page-achievement">
   <div class="content">
 
-    <div class="section-heading">Honours &amp; Awards</div>
+    <div class="section-heading">Achievement</div>
 
-<ul style="font-size:17px; line-height:2.2;">
-      <li>Invest Your Talent in Italy Scholarship (€30,000), 2025–2027</li>
-      <li>YSEALI Academic Fellows Program ($20,000), 2025</li>
-      <li>Conference Grant — National Pingtung University, Taiwan ($500), 2024</li>
-      <li>AUN Summer Camp — Brunei Darussalam University ($1,500), 2024</li>
-      <li>Small Grant Winner — Sustainable Healthy Diets through Food Systems Transformation ($4,000), 2023–2024</li>
-      <li>Distinguished Achievement Award & Dean's List, Can Tho University ($3,000), 2022–2024</li>
-      <li>Undergraduate Research Grant — Principal Investigator ($800), 2022–2023</li>
-      <li>Conference Grant — Airlangga University, Indonesia ($500), 2022</li>
-    </ul>
+<ol class="award-list">
+      <li>
+        <div class="award-head">
+          <span class="award-title">Invest Your Talent in Italy Scholarship</span>
+          <span class="award-year">2025</span>
+        </div>
+        <div class="award-desc">Awarded a €30,000 scholarship by the Italian government</div>
+      </li>
+      <li>
+        <div class="award-head">
+          <span class="award-title">Young Southeast Asian Leaders Initiative (YSEALI) Academic Fellows Program</span>
+          <span class="award-year">2025</span>
+        </div>
+        <div class="award-desc">Awarded a $20,000 scholarship by the U.S. Department of State</div>
+      </li>
+      <li>
+        <div class="award-head">
+          <span class="award-title">Conference Grant – National Pingtung University, Taiwan</span>
+          <span class="award-year">2024</span>
+        </div>
+        <div class="award-desc">Awarded $500 by Can Tho University</div>
+      </li>
+      <li>
+        <div class="award-head">
+          <span class="award-title">Summer School Grant – Brunei Darussalam University, Brunei</span>
+          <span class="award-year">2024</span>
+        </div>
+        <div class="award-desc">Awarded $1,500 by Can Tho University and Brunei Darussalam University</div>
+      </li>
+      <li>
+        <div class="award-head">
+          <span class="award-title">Small Research Grant</span>
+          <span class="award-year">2023 – 2024</span>
+        </div>
+        <div class="award-desc">Awarded $4,000 by Alliance for Biodiversity &amp; CIAT</div>
+      </li>
+      <li>
+        <div class="award-head">
+          <span class="award-title">Dean’s List, Can Tho University</span>
+          <span class="award-year">2022 – 2024</span>
+        </div>
+        <div class="award-desc">Awarded $3,000 by Can Tho University</div>
+      </li>
+      <li>
+        <div class="award-head">
+          <span class="award-title">Undergraduate Research Grant (Principal Investigator)</span>
+          <span class="award-year">2022 – 2023</span>
+        </div>
+        <div class="award-desc">Awarded $800 by Can Tho University</div>
+      </li>
+      <li>
+        <div class="award-head">
+          <span class="award-title">Conference Grant – Airlangga University, Indonesia</span>
+          <span class="award-year">2022</span>
+        </div>
+        <div class="award-desc">Awarded $500 by Can Tho University</div>
+      </li>
+    </ol>
 
   </div>
 </div>
